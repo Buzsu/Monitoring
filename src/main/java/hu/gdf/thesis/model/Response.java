@@ -1,17 +1,17 @@
 package hu.gdf.thesis.model;
 
-import hu.gdf.thesis.model.config.Operation;
+import com.fasterxml.jackson.databind.JsonNode;
+import hu.gdf.thesis.backend.FieldHandler;
 import hu.gdf.thesis.model.config.RestField;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Response {
     private String hostName;
     private String categoryType;
     private String restURL;
-    private String field;
-    private List<RestField> restFieldList = new ArrayList<>();
+    private RestField restField;
+    private JsonNode value;
+    private String fieldValuePair;
+    private String color;
 
     public String getHostName() {
         return hostName;
@@ -30,11 +30,11 @@ public class Response {
     }
 
     public String getField() {
-        return field;
+        return fieldValuePair;
     }
 
     public void setField(String fields) {
-        this.field = fields;
+        this.fieldValuePair = fields;
     }
 
     public String getCategoryType() {
@@ -45,11 +45,48 @@ public class Response {
         this.categoryType = categoryType;
     }
 
-    public List<RestField> getRestFieldList() {
-        return restFieldList;
+    public RestField getRestField() {
+        return restField;
     }
 
-    public void setRestFieldList(List<RestField> restFieldList) {
-        this.restFieldList = restFieldList;
+    public void setRestField(RestField restField) {
+        this.restField = restField;
     }
+
+    public String getFieldValuePair() {
+        return fieldValuePair;
+    }
+
+    public JsonNode getNode() {
+        return value;
+    }
+
+    public void setNode(JsonNode value) {
+        this.value = value;
+    }
+
+    public void setFieldValuePair() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(restField.getFieldName());
+        stringBuilder.append(" : ");
+        if (value.isTextual()){
+            stringBuilder.append(value.textValue());
+        } else {
+            stringBuilder.append(value);
+        }
+        fieldValuePair = String.valueOf(stringBuilder);
+    }
+
+    public String getColor() {
+
+        return color;
+    }
+
+    public void setColor() {
+
+        FieldHandler fieldHandler = new FieldHandler();
+        fieldHandler.checkOperator(restField, value);
+        this.color = fieldHandler.getColor();
+    }
+
 }
