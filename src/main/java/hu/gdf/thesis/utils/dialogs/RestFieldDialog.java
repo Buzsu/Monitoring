@@ -19,16 +19,16 @@ public class RestFieldDialog extends Dialog {
 
     public RestFieldDialog(String fileName, Config config, Category category, Entry entry, @Autowired FileHandler fileHandler) {
 
-        TextField restFieldTF =  new TextField("REST Field Name");
+        TextField restFieldPathTF =  new TextField("REST Field Path");
         Button cancelButton = new Button("Cancel" , e -> this.close());
 
         Button saveButton = new Button("Save to Config");
         saveButton.addClickListener( buttonClickEvent -> {
-            if(restFieldTF.getValue().isEmpty()){
+            if(restFieldPathTF.getValue().isEmpty()){
                 CustomNotification errorNotification = new CustomNotification("Save failed - Invalid or empty Input.");
                 errorNotification.open();
             } else {
-                restField.setFieldName(restFieldTF.getValue());
+                restField.setFieldPath(restFieldPathTF.getValue());
                 entry.getRestFields().add(restField);
 
                 int entryIndex = category.getEntries().indexOf(entry);
@@ -43,7 +43,7 @@ public class RestFieldDialog extends Dialog {
             }
         });
         HorizontalLayout buttonLayout = new HorizontalLayout(cancelButton, saveButton);
-        VerticalLayout dialogContentLayout = new VerticalLayout(restFieldTF, buttonLayout);
+        VerticalLayout dialogContentLayout = new VerticalLayout(restFieldPathTF, buttonLayout);
         this.add(dialogContentLayout);
     }
 

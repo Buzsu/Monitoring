@@ -14,15 +14,19 @@ public class Operation {
     @SerializedName("operator")
     @Expose
     private String operator;
+
     @SerializedName("value")
     @Expose
     private String value;
+
     @SerializedName("action")
     @Expose
     private String action;
+
     @SerializedName("alert")
     @Expose
     private boolean alert;
+
     @SerializedName("addresses")
     @Expose
     private List<Address> addresses = new ArrayList<>();

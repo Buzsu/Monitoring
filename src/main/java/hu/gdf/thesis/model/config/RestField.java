@@ -10,19 +10,19 @@ import com.google.gson.annotations.SerializedName;
 @Generated("jsonschema2pojo")
 public class RestField {
 
-    @SerializedName("fieldName")
+    @SerializedName("fieldPath")
     @Expose
-    private String fieldName;
+    private String fieldPath;
     @SerializedName("operations")
     @Expose
     private List<Operation> operation = new ArrayList<>();
 
-    public String getFieldName() {
-        return fieldName;
+    public String getFieldPath() {
+        return fieldPath;
     }
 
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
+    public void setFieldPath(String fieldPath) {
+        this.fieldPath = fieldPath;
     }
 
     public List<Operation> getOperation() {
@@ -35,6 +35,6 @@ public class RestField {
 
     @Override
     public String toString() {
-        return fieldName;
+        return fieldPath;
     }
 }

@@ -50,7 +50,7 @@ public class ConfigCreatorPage extends VerticalLayout {
 
         CustomSelect categorySelect = new CustomSelect("Select Category");
         CustomSelect entrySelect = new CustomSelect("Select Entry");
-        CustomSelect restFieldSelect = new CustomSelect("Select Rest Field");
+        CustomSelect restFieldSelect = new CustomSelect("Select REST Field Path");
         CustomSelect operationSelect = new CustomSelect("Select Operation");
         CustomSelect addressSelect = new CustomSelect("Select e-mail address");
 
@@ -121,7 +121,7 @@ public class ConfigCreatorPage extends VerticalLayout {
             });
         });
 
-        Button addRestFieldButton = new Button("Add REST Field");
+        Button addRestFieldButton = new Button("Add REST Field Path");
         addRestFieldButton.addClickListener(buttonClickEvent -> {
             RestFieldDialog restFieldDialog = new RestFieldDialog(fileName, config, category, entry, fileHandler);
             restFieldDialog.open();
@@ -132,7 +132,7 @@ public class ConfigCreatorPage extends VerticalLayout {
             });
         });
 
-        Button deleteRestFieldButton = new Button("Delete REST Field");
+        Button deleteRestFieldButton = new Button("Delete REST Field Path");
         deleteRestFieldButton.addClickListener(buttonClickEvent -> {
             ConfirmDialog confirmDialog = new ConfirmDialog(restFieldSelect.getValue().toString());
             confirmDialog.open();

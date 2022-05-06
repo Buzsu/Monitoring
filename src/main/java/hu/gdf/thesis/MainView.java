@@ -10,6 +10,7 @@ import com.vaadin.flow.theme.lumo.Lumo;
 @Route("")
 @CssImport("./styles/shared-styles.css")
 @CssImport(value="./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
+@CssImport(value="./styles/vaadin-grid-styling.css", themeFor = "vaadin-grid")
 @Theme(themeClass = Lumo.class, variant = Lumo.DARK)
 public class MainView extends VerticalLayout implements AppShellConfigurator {
 	public MainView () {
